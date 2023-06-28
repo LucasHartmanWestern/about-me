@@ -10,3 +10,35 @@ span {
 p {
   color: var(--text);
 }
+
+.skills-content {
+  @media (max-width: 768px) {
+    flex-direction: column !important;
+    gap: 50px;
+
+    .description {
+      width: 90% !important;
+    }
+    #globe::ng-deep {
+      width: 80% !important;
+    }
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  .description {
+    width: 40%;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text);
+  }
+
+  #globe::ng-deep {
+    width: 40%;
+    aspect-ratio: 1;
+    position: relative;
+    color: var(--text);
+  }
+}
