@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+$image-path: '~src/assets/images/';
+
+body {
+  background-color: var(--background);
+  font-family: Roboto;
+
+  --background: #F9F7F7;
+  --primary: #DBE2EF;
+  --secondary: #3F72AF;
+  --text: #112D4E;
+
+  &.light {
+    --background: #F9F7F7;
+    --primary: #DBE2EF;
+    --secondary: #3F72AF;
+    --text: #112D4E;
+  }
+
+  &.dark {
+    --background: #222831 !important;
+    --primary: #393E46 !important;
+    --secondary: #00ADB5 !important;
+    --text: #EEEEEE !important;
+  }
+
+}

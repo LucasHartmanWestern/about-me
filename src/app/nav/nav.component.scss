@@ -1,0 +1,117 @@
+$image-path: '~src/assets/images/';
+
+@media (max-width: 768px) {
+  .modeToggle {
+    width: 50% !important;
+    max-width: 130px !important;
+    overflow-x: hidden;
+
+    label:after {
+      top: 4.5px !important;
+    }
+  }
+  nav {
+    overflow: hidden;
+    width: 90% !important;
+
+    a {
+      font-size: 1rem !important;
+    }
+  }
+}
+
+@media (max-width: 310px) {
+  .modeToggle {
+    display: none !important;
+  }
+  nav {
+    overflow: hidden;
+    width: 100% !important;
+    justify-content: space-around !important;
+    gap: 0 !important;
+
+    a {
+      font-size: 1rem !important;
+      text-align: center;
+    }
+  }
+}
+
+.navbar{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary);
+  display: flex;
+
+  .modeToggle {
+    position: relative;
+    width: 20%;
+    max-width: 150px;
+    margin-left: 2.5%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+
+    label {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      display: block;
+      background: #ebebeb;
+      border-radius: 200px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      cursor: pointer;
+    }
+    label:after {
+      content: "";
+      width: 20%;
+      height: 50%;
+      position: absolute;
+      top: 7.5px;
+      left: 7.5px;
+      background: linear-gradient(180deg,#ffcc89,#d8860b);
+      border-radius: 180px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+    input {
+      width: 0;
+      height: 0;
+      visibility: hidden;
+    }
+    input:checked + label {
+      background: #ebebeb;
+    }
+    input:checked + label:after {
+      left: 90%;
+      transform: translateX(-100%);
+      background: linear-gradient(180deg,#777,#3a3a3a);
+    }
+    label, label:after {
+      transition: 0.3s
+    }
+    label:active:after{
+      width: 30%;
+    }
+  }
+
+  nav {
+    width: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 5%;
+
+    a {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+  }
+}
