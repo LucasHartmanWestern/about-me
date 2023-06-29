@@ -25,6 +25,15 @@ body {
 
 }
 
+* {
+  color: var(--text);
+  transition: 0.5s ease;
+}
+
 html {
   overflow-x: hidden;
+}
+
+body {
+  margin-bottom: 0 !important;
 }

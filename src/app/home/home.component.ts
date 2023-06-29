@@ -32,7 +32,14 @@ export class HomeComponent implements OnInit {
     this.wordDictionary['Git'] = this.randomSpherePoint(0.5);
     this.wordDictionary['ARM Assembly'] = this.randomSpherePoint(0.5);
     this.wordDictionary['TypeScript'] = this.randomSpherePoint(0.5);
-
+    this.wordDictionary['NodeJS'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['PyTorch'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['TensorFlow'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Figma'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['AWS'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['GCP'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Numpy'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Cplex'] = this.randomSpherePoint(0.5);
 
     this.renderWords('globe')
 
@@ -143,8 +150,8 @@ export class HomeComponent implements OnInit {
       span.style.fontSize = `${style.size}px`;
       span.style.opacity = `${style.transparency}`;
 
-      span.style.left = `${(container.offsetWidth / 3) + (this.wordDictionary[word]?.x  || 0) * (container.offsetWidth / 3)}px`;
-      span.style.top = `${(container.offsetHeight / 3) + (this.wordDictionary[word]?.y || 0) * (container.offsetHeight / 3)}px`;
+      span.style.left = `${(container.offsetWidth / 2.5) + (this.wordDictionary[word]?.x  || 0) * (container.offsetWidth / 2.5)}px`;
+      span.style.top = `${(container.offsetHeight / 2.5) + (this.wordDictionary[word]?.y || 0) * (container.offsetHeight / 2.5)}px`;
 
       // Add to container
       container.appendChild(span);

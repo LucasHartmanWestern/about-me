@@ -1,0 +1,97 @@
+.list {
+  padding: 25px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .page-body {
+    margin: 0 20px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+
+    &.visible {
+      margin-bottom: 48px;
+
+      .event::ng-deep {
+        opacity: 1;
+      }
+    }
+  }
+
+  .project {
+    padding: 8px;
+  }
+
+  .page-title {
+    z-index: 99;
+    font-size: 1.5rem;
+    background-color: var(--primary);
+    list-style: none;
+    padding: 12px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.6s;
+    position: sticky;
+    top: 64px;
+    border-radius: 12px;
+  }
+
+  .active {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 24px auto;
+  }
+
+  .border-bottom{
+    //border-bottom: 1px solid var(--secondary);
+  }
+}
+
+.timeline::ng-deep {
+  position: relative;
+  max-width: 900px;
+  margin: 20px auto;
+
+  &::before::ng-deep {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    @media (min-width: 769px) {
+      background: var(--secondary);
+    }
+  }
+
+  .event::ng-deep {
+    @media (max-width: 768px) {
+      justify-content: center !important;
+
+      .circle {
+        display: none !important;
+      }
+    }
+
+    display: flex;
+    justify-content: space-between;
+    opacity: 0; /* Hide events initially */
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+
+    .circle {
+      width: 20px;
+      height: 20px;
+      background: grey;
+      border-radius: 50%;
+      visibility: hidden;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
