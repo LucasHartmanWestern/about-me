@@ -7,7 +7,7 @@ $image-path: '~src/assets/images/';
     overflow-x: hidden;
 
     label:after {
-      top: 4.5px !important;
+      top: 5.5px !important;
     }
   }
   nav {
@@ -48,9 +48,10 @@ $image-path: '~src/assets/images/';
   display: flex;
 
   .modeToggle {
+    width: 50% !important;
+    max-width: 130px !important;
+    overflow-x: hidden;
     position: relative;
-    width: 20%;
-    max-width: 150px;
     margin-left: 2.5%;
     background: none;
     border: none;
@@ -73,7 +74,7 @@ $image-path: '~src/assets/images/';
       width: 20%;
       height: 50%;
       position: absolute;
-      top: 7.5px;
+      top: 5.5px;
       left: 7.5px;
       background: linear-gradient(180deg,#ffcc89,#d8860b);
       border-radius: 180px;
