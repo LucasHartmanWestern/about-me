@@ -8,6 +8,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ResearchComponent } from './research/research.component';
 import { ContactComponent } from './contact/contact.component';
 import { NavComponent } from './nav/nav.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { NavComponent } from './nav/nav.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

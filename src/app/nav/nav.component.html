@@ -4,9 +4,9 @@
     <label for="darkmode-toggle"></label>
   </div>
   <nav>
-    <a href="/about">About</a>
-    <a href="/research">Research</a>
-    <a href="/projects">Projects</a>
+    <button (click)="navigate('About')" [classList]="_navPage == 'About' ? 'active' : ''">About</button>
+    <button (click)="navigate('Research')" [classList]="_navPage == 'Research' ? 'active' : ''">Research</button>
+    <button (click)="navigate('Projects')" [classList]="_navPage == 'Projects' ? 'active' : ''">Projects</button>
   </nav>
 </div>
 

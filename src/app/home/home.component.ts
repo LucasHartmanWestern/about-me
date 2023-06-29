@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 // @ts-ignore
 @Component({
@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   // Dictionary for storing the words with their 3D coordinates
   wordDictionary: {[key: string]: {x: number, y: number, z: number} | undefined} = {};
+  intervalID: any;
 
   courseList: {courseName: string, grade: number}[] = [];
   selectedItem: any;
@@ -23,6 +24,12 @@ export class HomeComponent implements OnInit {
   lastMousePos = {x: 0, y: 0};
 
   constructor() { }
+
+  ngOnDestroy() {
+    if (this.intervalID) {
+      clearInterval(this.intervalID);
+    }
+  }
 
   ngOnInit(): void {
 
@@ -104,7 +111,7 @@ export class HomeComponent implements OnInit {
 
     this.renderWords('globe')
 
-    setInterval(() => {
+    this.intervalID = setInterval(() => {
       if (!this.mouseDragging) {
         this.rotateAllPoints({x: -0.2, y: 0.2, z: 0.1});
       }

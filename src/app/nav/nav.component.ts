@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 // @ts-ignore
 @Component({
@@ -9,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  _navPage: string = "About";
+  @Output() navPage = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
+
+
 
     // Get the current page URL
     var currentPage = window.location.href;
@@ -29,9 +34,22 @@ export class NavComponent implements OnInit {
       }
     }
 
+    this.navigate(localStorage.getItem('page') || 'About');
+
     if (localStorage.getItem('displayMode') == 'dark')
       document.getElementById('darkmode-toggle')?.setAttribute('checked', 'true');
   }
+
+  get getNavPage(): string {
+    return this._navPage;
+  }
+
+  navigate(value: string) {
+    localStorage.setItem('page', value);
+    this._navPage = value;
+    this.navPage.emit(this._navPage);
+  }
+
 
   toggleMode(): void {
     let body = document.querySelector('body');

@@ -14,7 +14,7 @@ $image-path: '~src/assets/images/';
     overflow: hidden;
     width: 90% !important;
 
-    a {
+    button {
       font-size: 1rem !important;
     }
   }
@@ -30,7 +30,7 @@ $image-path: '~src/assets/images/';
     justify-content: space-around !important;
     gap: 0 !important;
 
-    a {
+    button {
       font-size: 1rem !important;
       text-align: center;
     }
@@ -110,10 +110,14 @@ $image-path: '~src/assets/images/';
     align-items: center;
     gap: 5%;
 
-    a {
+    button {
+      background: none;
+      border: none;
+      outline: none;
       font-size: 1.5rem;
       text-decoration: none;
       color: var(--text);
+      cursor: pointer;
 
       &.active {
         text-shadow: 0px 0px 4px var(--text);
