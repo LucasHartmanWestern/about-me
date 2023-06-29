@@ -1,3 +1,7 @@
+#projects {
+  text-align: center;
+}
+
 .list {
   padding: 25px;
   justify-content: center;
@@ -11,7 +15,7 @@
     transition: max-height 0.2s ease-out;
 
     &.visible {
-      margin-bottom: 48px;
+      margin-bottom: 12px;
 
       .event::ng-deep {
         opacity: 1;
@@ -43,13 +47,14 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin: 24px auto;
   }
+}
 
-  .border-bottom{
-    //border-bottom: 1px solid var(--secondary);
-  }
+.description {
+  font-size: 1.2rem;
 }
 
 .timeline::ng-deep {
+  flex-direction: column;
   position: relative;
   max-width: 900px;
   margin: 20px auto;
@@ -66,6 +71,13 @@
     }
   }
 
+  .bottom {
+    @media (max-width: 768px) {
+      margin-bottom: 10% !important;
+    }
+    margin-bottom: -10%;
+  }
+
   .event::ng-deep {
     @media (max-width: 768px) {
       justify-content: center !important;
@@ -74,6 +86,7 @@
         display: none !important;
       }
     }
+
 
     display: flex;
     justify-content: space-between;
@@ -87,6 +100,29 @@
       background: grey;
       border-radius: 50%;
       visibility: hidden;
+    }
+
+    .content {
+      @media (max-width: 768px) {
+        width: 100% !important;
+      }
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+
+      p {
+        width: auto;
+        max-width: 100%;
+      }
     }
 
     &.visible {

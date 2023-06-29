@@ -1,6 +1,5 @@
 <section id="projects">
-  <h2>Projects</h2>
-  <p>Here's a brief overview of my projects...</p>
+  <h2>Here's a brief overview of my projects...</h2>
 
   <div class="list">
 
@@ -8,11 +7,13 @@
       <button class="accordion page-title" (click)="openPanel($event)" [innerText]="project.project"></button>
       <div class="panel page-body">
 
+        <span class="description" [innerHTML]="project.description"></span>
+
         <div class="timeline">
-          <div *ngFor="let event of getEvents(project.project); let i = index" class="event">
+          <div *ngFor="let event of getEvents(project.project); let i = index" [classList]="i < getEvents(project.project).length - 1 ? 'bottom event' : 'event'">
             <div class="circle" *ngIf="i % 2 == 0"></div>
             <div class="content">
-              <img [src]="event.image" alt="Event 1">
+              <img *ngIf="event.image" [src]="'./assets/images/project_images/' + project.project + '/' + event.image" [alt]="event.title">
               <p [innerText]="event.body"></p>
             </div>
             <div class="circle" *ngIf="i % 2 != 0"></div>

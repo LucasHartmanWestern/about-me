@@ -9,100 +9,60 @@ export class ProjectsComponent implements OnInit {
 
   constructor() { }
 
-  projectInfo: { project: string, events: {title: string, body: string, image: string}[] }[] = [];
+  projectInfo: { project: string, description: string, events: {title: string, body: string, image: string | null}[] }[] = [];
 
   ngOnInit(): void {
 
-    this.projectInfo.push({project: 'Cool Pool (working title)', events: [
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
+    this.projectInfo.push({project: 'Cool Pool (in progress)', description: 'Foddian game where hit a ball to get to the top', events: [
+        {title: "Swing", body: "Move the ball by hitting with various sports equipment", image: "golf-swing.png"}
       ]});
-    this.projectInfo.push({project: 'Bible AI', events: [
-      {title: "Event 4", body: "This was the second Event", image: "img1.png"},
-      {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-      {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-      {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-      {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-      {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-      {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-      {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-      {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-      {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-      {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-      {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-      {title: "Event 3", body: "This was the third Event", image: "img3.png"}
+    this.projectInfo.push({project: 'Bible AI',
+      description:
+        'Generate new text using a NLP trained only on the NIV Bible.<br><br>' +
+        'Have the model finish prompts, or generate entirely new sentences.<br><br>' +
+        'Based on the research paper \"Attention is All You Need\"<br><br>' +
+        'For Example:<br>' +
+        '<b>Input</b>: \"Then I said test\"<br>' +
+        '<b>Output</b>: \"Then I said testimony to him, Amenah listening, saying to me\"', events: []});
+    this.projectInfo.push({project: 'Light Souls', description: 'A 3rd action-RPG souls-like game made in Unity', events: [
+        {title: "Multiplayer", body: "Multiplayer using a C++ backend", image: "multiplayer-demo.png"},
+        {title: "Character Select", body: "Multiple characters to choose from", image: "character-select.png"},
+        {title: "Shooting", body: "3rd person ranged combat", image: "shooting-demo.png"},
+        {title: "Ability", body: "Unique abilities for each character", image: "ability-demo.png"},
+        {title: "Collectable", body: "Multiple collectables scattered around levels", image: "collectable-demo.png"},
+        {title: "Inventory", body: "Inventory and power-up management", image: "inventory.png"},
+        {title: "Boss", body: "Multiple bosses to fight", image: "boss-demo.png"},
+        {title: "Dialogue", body: "Full dialogue system and narrative", image: "dialogue.png"}
+      ]});
+    this.projectInfo.push({project: 'UWOutlines', description: 'A course outline editor website for use by the University hosted using GCP<br><br>Demo link <a href="https://www.youtube.com/watch?v=WsDy3XwIQYc">here</a>', events: [
+        {title: "Editor", body: "Outline editor system", image: "outline-editor.png"},
+        {title: "Account Creation", body: "Authentication system with account creation", image: "accounts.png"},
+        {title: "GPT Assistance", body: "ChatGPT integration for suggested improvement while editing", image: "gpt-assist.png"},
+        {title: "Notifications", body: "Receive and manage notifications", image: "notifications.png"},
+        {title: "Feedback", body: "Admins can provide feedback on outlines", image: "feedback.png"},
+        {title: "Course management", body: "Manage multiple courses and their requisites", image: "course-manager.png"},
+        {title: "Themes", body: "Choose from a variety of themes", image: "themes.png"},
+        {title: "Mobile", body: "Fully responsive layout", image: "mobile.png"},
+        {title: "Change detection", body: "Change detection and tracking system", image: "change-detection.png"},
+      ]});
+    this.projectInfo.push({project: 'Music Mania', description: 'An online music app for creating and rating playlists, hosted using AWS', events: [
+        {title: "Search genres", body: "Browse various genres", image: "search-genres.png"},
+        {title: "Playlist", body: "Curate playlists and view other's playlists", image: "playlist.png"},
+        {title: "Reviews", body: "View and write reviews for playlists, tracks, and artists", image: "reviews.png"},
+        {title: "Privacy", body: "View privacy, acceptable use, and DMCA policies", image: "privacy.png"},
+        {title: "Tracks", body: "View and listen to tracks", image: "tracks.png"},
+        {title: "DMCA", body: "View and dispute DMCA requests", image: "dmca.png"}
+      ]});
+    this.projectInfo.push({project: 'All You Can ESports', description: 'An ESports news and fantasy team site designed to handle big data and hosted using AWS', events: [
+        {title: "Match Searching", body: "Search matches by keywords with soft matching", image: "match-search.png"},
+        {title: "Fantasy", body: "Create fantasy teams which update as the season progresses", image: "fantasy.png"},
+        {title: "Tickets", body: "Track ticket sales of various events", image: "tickets.png"},
+        {title: "Tournaments", body: "View list of upcoming tournaments", image: "tournaments.png"},
+        {title: "Tournament", body: "Get more details on individual tournaments", image: "tournament.png"},
+        {title: "Teams", body: "Search and view team details", image: "teams.png"},
+        {title: "Betting", body: "Place bets on matches", image: "betting.png"},
+        {title: "Users", body: "View user details as an admin", image: "users.png"}
     ]});
-    this.projectInfo.push({project: 'Light Souls', events: [
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
-      ]});
-    this.projectInfo.push({project: 'UWOutlines', events: [
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
-      ]});
-    this.projectInfo.push({project: 'Music Mania', events: [
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
-      ]});
-    this.projectInfo.push({project: 'All You Can ESports', events: [
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
-        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
-        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
-        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
-      ]});
 
     let body = document.querySelector('body');
 

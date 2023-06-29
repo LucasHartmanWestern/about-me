@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     this.selectedItem = this.courseList[2]; // Default selection
 
     this.workList.push({
-      company: 'Western University', logo: './assets/images/western_logo.png', roles: [{
+      company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
       role: 'Undergraduate Researcher',
         period: 'May 2023 - Present',
         description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project.'}]
