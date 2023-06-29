@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.projectInfo.push({project: 'Cool Pool (in progress)', description: 'Foddian game where hit a ball to get to the top', events: [
+    this.projectInfo.push({project: 'Cool Pool (in progress)', description: 'Foddian-type game where the player hits a ball to get to the top', events: [
         {title: "Swing", body: "Move the ball by hitting with various sports equipment", image: "golf-swing.png"}
       ]});
     this.projectInfo.push({project: 'Bible AI',
@@ -24,7 +24,7 @@ export class ProjectsComponent implements OnInit {
         'For Example:<br>' +
         '<b>Input</b>: \"Then I said test\"<br>' +
         '<b>Output</b>: \"Then I said testimony to him, Amenah listening, saying to me\"', events: []});
-    this.projectInfo.push({project: 'Light Souls', description: 'A 3rd action-RPG souls-like game made in Unity', events: [
+    this.projectInfo.push({project: 'Light Souls', description: 'A 3rd-person action-RPG souls-like game made in Unity', events: [
         {title: "Multiplayer", body: "Multiplayer using a C++ backend", image: "multiplayer-demo.png"},
         {title: "Character Select", body: "Multiple characters to choose from", image: "character-select.png"},
         {title: "Shooting", body: "3rd person ranged combat", image: "shooting-demo.png"},
