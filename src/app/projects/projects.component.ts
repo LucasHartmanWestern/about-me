@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.projectInfo.push({project: 'cool-pool', events: [
+    this.projectInfo.push({project: 'Cool Pool (working title)', events: [
         {title: "Event 1", body: "This was the first Event", image: "img1.png"},
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"},
@@ -28,8 +28,8 @@ export class ProjectsComponent implements OnInit {
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"}
       ]});
-    this.projectInfo.push({project: 'bible-ai', events: [
-      {title: "Event 1", body: "This was the first Event", image: "img1.png"},
+    this.projectInfo.push({project: 'Bible AI', events: [
+      {title: "Event 4", body: "This was the second Event", image: "img1.png"},
       {title: "Event 2", body: "This was the second Event", image: "img2.png"},
       {title: "Event 3", body: "This was the third Event", image: "img3.png"},
       {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
@@ -43,7 +43,7 @@ export class ProjectsComponent implements OnInit {
       {title: "Event 2", body: "This was the second Event", image: "img2.png"},
       {title: "Event 3", body: "This was the third Event", image: "img3.png"}
     ]});
-    this.projectInfo.push({project: 'light-souls', events: [
+    this.projectInfo.push({project: 'Light Souls', events: [
         {title: "Event 1", body: "This was the first Event", image: "img1.png"},
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"},
@@ -58,7 +58,7 @@ export class ProjectsComponent implements OnInit {
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"}
       ]});
-    this.projectInfo.push({project: 'music-mania', events: [
+    this.projectInfo.push({project: 'UWOutlines', events: [
         {title: "Event 1", body: "This was the first Event", image: "img1.png"},
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"},
@@ -73,7 +73,22 @@ export class ProjectsComponent implements OnInit {
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"}
       ]});
-    this.projectInfo.push({project: 'all-you-can-esports', events: [
+    this.projectInfo.push({project: 'Music Mania', events: [
+        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
+        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
+        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
+        {title: "Event 4", body: "This was the fourth Event", image: "img4.png"},
+        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
+        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
+        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
+        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
+        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
+        {title: "Event 3", body: "This was the third Event", image: "img3.png"},
+        {title: "Event 1", body: "This was the first Event", image: "img1.png"},
+        {title: "Event 2", body: "This was the second Event", image: "img2.png"},
+        {title: "Event 3", body: "This was the third Event", image: "img3.png"}
+      ]});
+    this.projectInfo.push({project: 'All You Can ESports', events: [
         {title: "Event 1", body: "This was the first Event", image: "img1.png"},
         {title: "Event 2", body: "This was the second Event", image: "img2.png"},
         {title: "Event 3", body: "This was the third Event", image: "img3.png"},

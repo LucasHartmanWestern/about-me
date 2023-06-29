@@ -54,3 +54,183 @@ header {
     color: var(--text);
   }
 }
+
+#education {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+
+  .western-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+
+    .formal-education {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .cgpa {
+        font-size: 0.8rem;
+      }
+    }
+
+    .western-logo {
+      background: url('#{$image-path}western_logo.png');
+      height: 128px;
+      aspect-ratio: 192 / 235;
+      background-size: contain;
+      border-radius: 12px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .carousel {
+    @media (max-width: 768px) {
+      width: 95% !important;
+
+      .carousel-item {
+        width: 85% !important;
+      }
+    }
+
+    position: relative;
+    overflow: hidden;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    border-radius: 12px;
+
+    .carousel-content {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 80%;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 33%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+
+      .item-content {
+        width: 75%;
+        margin: auto;
+        text-align: center;
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .selected {
+      background: var(--primary);
+    }
+
+    .arrow {
+      transition: 0.5s ease;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2em;
+      color: var(--secondary);
+      background: transparent;
+      border: none;
+      z-index: 2;
+
+      &:disabled {
+        cursor: default;
+        opacity: 0;
+      }
+    }
+
+    .arrow-left {
+      left: 0px;
+    }
+
+    .arrow-right {
+      right: 0px;
+    }
+  }
+
+}
+
+#work {
+  display: flex;
+  justify-content: center;
+
+  .work-experience {
+    @media (max-width: 768px) {
+      width: 95% !important;
+    }
+    width: 80%;
+    margin-bottom: 24px;
+
+    h3 {
+      margin: 48px 0 0 0 !important;
+      font-size: 1.7rem !important;
+      text-align: center;
+    }
+
+    .company {
+
+      .company-info {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding: 0 24px;
+        gap: 24px;
+
+        h4 {
+          font-size: 1.5rem;
+        }
+        .logo {
+          width: 64px;
+          height: 64px;
+          object-fit: contain;
+        }
+      }
+
+      .roles {
+
+        .role-item {
+          border-left: 2px solid var(--secondary);
+          padding: 12px 24px;
+          margin: 0 0 0 56px;
+          display: flex;
+          flex-direction: column;
+
+          .role {
+            font-size: 1.2rem;
+          }
+          .period {
+            font-size: 0.8rem;
+          }
+          .description {
+            font-size: 0.8rem;
+            padding: 12px 0;
+          }
+        }
+      }
+    }
+  }
+}

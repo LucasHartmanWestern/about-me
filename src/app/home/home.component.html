@@ -17,5 +17,53 @@
 
 </section>
 
+<section id="education">
+  <div class="western-info">
+    <div class="formal-education">
+      <span class="title">BESc in Software Engineering at Western University</span>
+      <span class="cgpa">4.0 CGPA</span>
+    </div>
+    <div class="western-logo"></div>
+  </div>
+
+
+  <div class="carousel">
+    <button (click)="previousItem()" class="arrow arrow-left">&lt;</button>
+    <div class="carousel-content" [style.transform]="getTransform()">
+      <div *ngFor="let item of courseList; let i = index"
+           [class.selected]="item === selectedItem"
+           class="carousel-item">
+
+        <div class="item-content">
+          <h3 [innerText]="item.courseName"></h3>
+          <span [innerText]="item.grade + '%'"></span>
+        </div>
+
+      </div>
+    </div>
+    <button (click)="nextItem()" class="arrow arrow-right">&gt;</button>
+  </div>
+</section>
+
+<section id="work">
+  <div class="work-experience">
+    <h3>Work Experience</h3>
+    <div *ngFor="let item of workList" class="company">
+      <div class="company-info">
+        <img [src]="item.logo" class="logo" >
+        <h4 [innerText]="item.company"></h4>
+      </div>
+      <div class="roles">
+        <div *ngFor="let role of item.roles" class="role-item">
+          <span [innerText]="role.role" class="role"></span>
+          <span [innerText]="role.period" class="period"></span>
+          <span [innerText]="role.description" class="description"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 <section id="contact">
 </section>

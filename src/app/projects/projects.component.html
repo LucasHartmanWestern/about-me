@@ -4,28 +4,12 @@
 
   <div class="list">
 
-    <div class="project border-bottom">
-      <button class="accordion page-title" (click)="openPanel($event)">Cool Pool (working title)</button>
-      <div class="panel page-body">
-        <div class="timeline">
-          <div *ngFor="let event of getEvents('cool-pool'); let i = index" class="event">
-            <div class="circle" *ngIf="i % 2 == 0"></div>
-            <div class="content">
-              <img [src]="event.image" alt="Event 1">
-              <p [innerText]="event.body"></p>
-            </div>
-            <div class="circle" *ngIf="i % 2 != 0"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project border-bottom">
-      <button class="accordion page-title" (click)="openPanel($event)">Bible AI</button>
+    <div *ngFor="let project of projectInfo" class="project border-bottom">
+      <button class="accordion page-title" (click)="openPanel($event)" [innerText]="project.project"></button>
       <div class="panel page-body">
 
         <div class="timeline">
-          <div *ngFor="let event of getEvents('bible-ai'); let i = index" class="event">
+          <div *ngFor="let event of getEvents(project.project); let i = index" class="event">
             <div class="circle" *ngIf="i % 2 == 0"></div>
             <div class="content">
               <img [src]="event.image" alt="Event 1">
@@ -35,54 +19,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-
-    <div class="project border-bottom">
-      <button class="accordion page-title" (click)="openPanel($event)">Light Souls</button>
-      <div class="panel page-body">
-        <div class="timeline">
-          <div *ngFor="let event of getEvents('light-souls'); let i = index" class="event">
-            <div class="circle" *ngIf="i % 2 == 0"></div>
-            <div class="content">
-              <img [src]="event.image" alt="Event 1">
-              <p [innerText]="event.body"></p>
-            </div>
-            <div class="circle" *ngIf="i % 2 != 0"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project border-bottom">
-      <button class="accordion page-title" (click)="openPanel($event)">Music Mania</button>
-      <div class="panel page-body">
-        <div class="timeline">
-          <div *ngFor="let event of getEvents('music-mania'); let i = index" class="event">
-            <div class="circle" *ngIf="i % 2 == 0"></div>
-            <div class="content">
-              <img [src]="event.image" alt="Event 1">
-              <p [innerText]="event.body"></p>
-            </div>
-            <div class="circle" *ngIf="i % 2 != 0"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project">
-      <button class="accordion page-title" (click)="openPanel($event)">All You Can ESports</button>
-      <div class="panel page-body">
-        <div class="timeline">
-          <div *ngFor="let event of getEvents('all-you-can-esports'); let i = index" class="event">
-            <div class="circle" *ngIf="i % 2 == 0"></div>
-            <div class="content">
-              <img [src]="event.image" alt="Event 1">
-              <p [innerText]="event.body"></p>
-            </div>
-            <div class="circle" *ngIf="i % 2 != 0"></div>
-          </div>
-        </div>
       </div>
     </div>
 

@@ -25,18 +25,15 @@ export class NavComponent implements OnInit {
       if (anchors[i].href === currentPage) {
         // Add a CSS class to highlight the anchor
         anchors[i].classList.add('active');
-        console.log(anchors[i].classList);
-
         break;
       }
     }
 
+    if (localStorage.getItem('displayMode') == 'dark')
+      document.getElementById('darkmode-toggle')?.setAttribute('checked', 'true');
   }
 
   toggleMode(): void {
-    console.log(document.querySelector('input')?.checked);
-    console.log(document.querySelector('label'));
-
     let body = document.querySelector('body');
 
     let mode = localStorage.getItem('displayMode');

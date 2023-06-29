@@ -12,12 +12,73 @@ export class HomeComponent implements OnInit {
   // Dictionary for storing the words with their 3D coordinates
   wordDictionary: {[key: string]: {x: number, y: number, z: number} | undefined} = {};
 
+  courseList: {courseName: string, grade: number}[] = [];
+  selectedItem: any;
+  atEnd: boolean = false;
+  atStart: boolean = false;
+
+  workList: {company: string, logo: string, roles: {role: string, period: string,  description: string}[]}[] = [];
+
   mouseDragging = false;
   lastMousePos = {x: 0, y: 0};
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.courseList.push({courseName: 'Intro to Programming', grade: 100});
+    this.courseList.push({courseName: 'Discrete Math', grade: 96});
+    this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
+    this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
+    this.courseList.push({courseName: 'Scripting', grade: 97});
+    this.courseList.push({courseName: 'Software Design', grade: 95});
+    this.courseList.push({courseName: 'Software Construction', grade: 95});
+    this.courseList.push({courseName: 'Networking', grade: 97});
+    this.courseList.push({courseName: 'Database Management Systems', grade: 95});
+    this.courseList.push({courseName: 'Operating Systems', grade: 93});
+    this.courseList.push({courseName: 'HCI Design', grade: 99});
+    this.selectedItem = this.courseList[2]; // Default selection
+
+    this.workList.push({
+      company: 'Western University', logo: './assets/images/western_logo.png', roles: [{
+      role: 'Undergraduate Researcher',
+        period: 'May 2023 - Present',
+        description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project.'}]
+    });
+    this.workList.push({
+      company: 'Western Developers Society', logo: './assets/images/wds.png', roles: [{
+        role: 'Vice President of Technology',
+        period: 'June 2023 - Present',
+        description: 'This role involves managing the technological output of one of the largest computer science student clubs at Western University. On top of managing a small team of the top developers within the club, I also help to design and coordinate events that teach new and exciting technologies to interested students.'
+      }, {
+        role: 'Technical Lead',
+        period: 'September 2022 - June 2023',
+        description: 'As a technical lead at this student club, I developed and hosted workshops, advised the various project developer teams, and did web development work. I worked directly with the VP of Development to help build the club into one of the largest computer science clubs at Western University in its first year of being active.'
+      }]
+    });
+    this.workList.push({
+      company: 'Optimy', logo: './assets/images/optimy.png', roles: [{
+        role: 'Front-end Dev',
+        period: 'April 2022 - June 2023',
+        description: 'I worked directly with senior front-end developers learning new development skills and working on numerous web development projects. I worked with the Angular framework and created numerous features for one of the company\'s web applications which is currently used by hundreds of users daily.'
+      }, {
+        role: 'Quality Assurance Specialist',
+        period: 'June 2020 - June 2023',
+        description: 'In this position, I did program testing, technical troubleshooting, and often worked with senior software developers giving them input on program development as well as relaying user feedback. I also handled the automation of regression testing using Selenium with BrowserStack. I gained a lot of knowledge on industry-leading technology and how it can be used effectively in the business world. I was trained on a lot of software development best practices and learned a lot about how to develop code that is less prone to issues.'
+      }]
+    });
+    this.workList.push({
+      company: 'Kognitive Sales Solutions', logo: './assets/images/kss.png', roles: [{
+        role: 'Field Support Technician',
+        period: 'October 2018 - September 2021',
+        description: 'I reported directly to the Director of Operations for the company and helped to support the sales representatives at the company with any technical issues they had. I also helped to build and send reports to the company\'s various clients. I gained lots of experience in this role and learned much about the technology used in many modern businesses.'
+      }, {
+        role: 'Inventory Analyst Support',
+        period: 'October 2019 - June 20203',
+        description: 'In this role I did back-end technical support work for the company as well as made inventory ordering decisions based on trends in sales and current stock levels. I was also responsible for managing employee compliance with our internal systems.'
+      }]
+    });
+
 
     this.wordDictionary['Python'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Angular'] = this.randomSpherePoint(0.5);
@@ -70,6 +131,43 @@ export class HomeComponent implements OnInit {
 
     body?.setAttribute('class', mode);
 
+  }
+
+  nextItem(): void {
+    const index = this.courseList.indexOf(this.selectedItem);
+    if (index < this.courseList.length - 1) {
+      this.selectedItem = this.courseList[index + 1];
+    }
+  }
+
+  previousItem(): void {
+    const index = this.courseList.indexOf(this.selectedItem);
+    if (index > 0) {
+      this.selectedItem = this.courseList[index - 1];
+    }
+  }
+
+  getTransform(): string {
+
+    let mobile = window.innerWidth <= 768 ? true : false;
+
+    const index = this.courseList.indexOf(this.selectedItem);
+
+    if (index == this.courseList.length - 1) {
+      document.querySelector('.arrow-right')?.setAttribute('disabled', 'true');
+    } else if (index == 0) {
+      document.querySelector('.arrow-left')?.setAttribute('disabled', 'true');
+    } else {
+      document.querySelector('.arrow-right')?.removeAttribute('disabled');
+      document.querySelector('.arrow-left')?.removeAttribute('disabled');
+    }
+
+    if (index < this.courseList.length - (mobile ? 0 : 1)) {
+      return `translateX(calc(-${(index - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index) * 24}px ${mobile ? '+ 7.5%' : ''}))`;
+    }
+    else {
+      return `translateX(calc(-${(index - 1 - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index - 1) * 24}px ${mobile ? '+ 7.5%' : ''}))`;
+    }
   }
 
   onMouseDown(event: MouseEvent): void {
