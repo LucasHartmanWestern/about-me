@@ -7,7 +7,7 @@ $image-path: '~src/assets/images/';
     overflow-x: hidden;
 
     label:after {
-      top: 5.5px !important;
+      top: 4.5px !important;
     }
   }
   nav {
@@ -20,9 +20,17 @@ $image-path: '~src/assets/images/';
   }
 }
 
-@media (max-width: 310px) {
+@media (max-width: 400px) {
   .modeToggle {
-    display: none !important;
+    width: 10% !important;
+    max-width: 40px !important;
+
+    label:after {
+      width: 50% !important;
+      height: 50% !important;
+      left: 50% !important;
+      top: 25% !important;
+    }
   }
   nav {
     overflow: hidden;
@@ -48,8 +56,8 @@ $image-path: '~src/assets/images/';
   display: flex;
 
   .modeToggle {
-    width: 50% !important;
-    max-width: 130px !important;
+    width: 50%;
+    max-width: 130px;
     overflow-x: hidden;
     position: relative;
     margin-left: 2.5%;
