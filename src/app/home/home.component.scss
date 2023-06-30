@@ -33,6 +33,10 @@ header {
     }
     #globe::ng-deep {
       width: 80% !important;
+
+      span {
+        z-index: -999;
+      }
     }
   }
   display: flex;

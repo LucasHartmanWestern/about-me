@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
 
 // @ts-ignore
 @Component({
@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Dictionary for storing the words with their 3D coordinates
   wordDictionary: {[key: string]: {x: number, y: number, z: number} | undefined} = {};
   intervalID: any;
+  private velocity = { x: 0, y: 0 };
+  private friction = 0.95; // This can be tweaked for different "feeling"
 
   courseList: {courseName: string, grade: number}[] = [];
   selectedItem: any;
@@ -23,15 +25,53 @@ export class HomeComponent implements OnInit, OnDestroy {
   mouseDragging = false;
   lastMousePos = {x: 0, y: 0};
 
-  constructor() { }
+  throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => ReturnType<T> | undefined {
+    let inThrottle: boolean;
+    let result: ReturnType<T> | undefined;
+
+    return function(this: ThisParameterType<T>, ...args: Parameters<T>): ReturnType<T> | undefined {
+      const context = this;
+      if (!inThrottle) {
+        result = func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+      return result;
+    };
+  }
+
+  constructor() {
+    this.onMouseMove = this.throttle(this.onMouseMove.bind(this), 10);
+    this.onTouchMove = this.throttle(this.onTouchMove.bind(this), 1);
+    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onTouchEnd = this.onTouchEnd.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+  }
 
   ngOnDestroy() {
     if (this.intervalID) {
       clearInterval(this.intervalID);
     }
+
+    document.removeEventListener('touchstart', this.onTouchStart, true);
+    document.removeEventListener('touchmove', this.onTouchMove, true);
+    const container = document.getElementById('globe');
+    container?.removeEventListener('mousedown', this.onMouseDown);
+    container?.removeEventListener('mouseup', this.onMouseUp);
+    container?.removeEventListener('mousemove', this.onMouseMove);
+    container?.removeEventListener('touchstart', this.onTouchStart);
+    container?.removeEventListener('touchend', this.onTouchEnd);
+    window.removeEventListener('touchend', this.onTouchEnd);
+    window.removeEventListener('touchmove', this.onTouchMove);
+    container?.removeEventListener('touchcancel', this.onTouchEnd);
+    container?.removeEventListener('mouseleave', this.onMouseUp);
   }
 
   ngOnInit(): void {
+
+    this.renderWords('globe');
+    this.performRotation();
 
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Discrete Math', grade: 96});
@@ -113,8 +153,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wordDictionary['Numpy'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Cplex'] = this.randomSpherePoint(0.5);
 
-    this.renderWords('globe')
-
     this.intervalID = setInterval(() => {
       if (!this.mouseDragging) {
         this.rotateAllPoints({x: -0.2, y: 0.2, z: 0.1});
@@ -122,12 +160,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 10);
 
     const container = document.getElementById('globe');
-    container?.addEventListener('mousedown', (e) => this.onMouseDown(e));
-    container?.addEventListener('mouseup', () => this.onMouseUp());
-    container?.addEventListener('mousemove', (e) => this.onMouseMove(e));
-    container?.addEventListener('touchstart', (e) => this.onTouchStart(e));
-    container?.addEventListener('touchend', () => this.onTouchEnd());
-    container?.addEventListener('touchmove', (e) => this.onTouchMove(e));
+    container?.addEventListener('mousedown', this.onMouseDown);
+    container?.addEventListener('mousemove', this.onMouseMove);
+    container?.addEventListener('mouseleave', this.onMouseUp);
+    container?.addEventListener('touchstart', this.onTouchStart);
+    container?.addEventListener('touchend', this.onTouchEnd);
+    container?.addEventListener('touchmove', this.onTouchMove);
+    container?.addEventListener('touchcancel', this.onTouchEnd);
+    window.addEventListener('mouseup', () => this.onMouseUp());
+    window.addEventListener('touchend', () => this.onTouchEnd());
 
     let body = document.querySelector('body');
 
@@ -191,47 +232,98 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onMouseMove(event: MouseEvent): void {
-    if (!this.mouseDragging) {
+    if (!this.mouseDragging || !this.isMouseOnSphere(event)) {
       return;
     }
 
-    // Compute rotation based on mouse movement delta
     const dx = event.clientX - this.lastMousePos.x;
     const dy = event.clientY - this.lastMousePos.y;
 
-    // Rotate all points with the computed rotation
-    this.rotateAllPoints({x: -dy * 0.5, y: dx * 0.5, z: 0});
+    this.velocity.x = -dy * 0.5;
+    this.velocity.y = dx * 0.5;
 
     this.lastMousePos = {x: event.clientX, y: event.clientY};
   }
 
   onTouchStart(event: TouchEvent): void {
-    this.mouseDragging = true;
-    this.lastMousePos = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+    event.preventDefault(); // Disable default touch behavior, including scrolling
+
+    if (this.mouseDragging === true) return;
+
+    if (this.isTouchOnSphere(event.touches[0])) {
+      this.mouseDragging = true;
+      this.lastMousePos = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+    }
   }
 
+
   onTouchEnd(): void {
+
+    if (this.mouseDragging == false) return;
+
     this.mouseDragging = false;
   }
 
   onTouchMove(event: TouchEvent): void {
-    if (!this.mouseDragging) {
+
+    if (!this.mouseDragging || !this.isTouchOnSphere(event.touches[0])) {
       return;
     }
 
-    // Compute rotation based on touch movement delta
-    const dx = event.touches[0].clientX - this.lastMousePos.x;
-    const dy = event.touches[0].clientY - this.lastMousePos.y;
+    if (this.mouseDragging) {
+      event.preventDefault();
+      const dx = event.touches[0].clientX - this.lastMousePos.x;
+      const dy = event.touches[0].clientY - this.lastMousePos.y;
 
-    // Rotate all points with the computed rotation
-    this.rotateAllPoints({x: -dy * 0.5, y: dx * 0.5, z: 0});
+      this.velocity.x = -dy * 0.5;
+      this.velocity.y = dx * 0.5;
 
-    this.lastMousePos = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+      this.lastMousePos = {x: event.touches[0].clientX, y: event.touches[0].clientY};
+    }
+  }
+
+  isTouchOnSphere(touch: Touch): boolean {
+    const sphereElement = document.getElementById('globe');
+    const rect = sphereElement?.getBoundingClientRect();
+
+    if (!rect) {
+      return false;
+    }
+
+    return touch.clientX >= rect.left && touch.clientX <= rect.right &&
+      touch.clientY >= rect.top && touch.clientY <= rect.bottom;
+  }
+
+  isMouseOnSphere(event: MouseEvent): boolean {
+    const sphereElement = document.getElementById('globe');
+    const rect = sphereElement?.getBoundingClientRect();
+
+    if (!rect) {
+      return false;
+    }
+
+    return event.clientX >= rect.left && event.clientX <= rect.right &&
+      event.clientY >= rect.top && event.clientY <= rect.bottom;
+  }
+
+  performRotation(): void {
+    if (Math.abs(this.velocity.x) > 0.01 || Math.abs(this.velocity.y) > 0.01) {
+      this.rotateAllPoints({x: this.velocity.x, y: this.velocity.y, z: 0});
+
+      // Apply friction
+      this.velocity.x *= this.friction;
+      this.velocity.y *= this.friction;
+    }
+
+    // Request next frame
+    requestAnimationFrame(() => this.performRotation());
   }
 
   renderWords(containerId: string): void {
     // Get the container where words will be rendered
     const container = document.getElementById(containerId);
+
+    const fragment = document.createDocumentFragment();
 
     if (!container) {
       console.error(`No container found with id ${containerId}`);
@@ -263,27 +355,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       span.style.top = `${(container.offsetHeight / 2.5) + (this.wordDictionary[word]?.y || 0) * (container.offsetHeight / 2.5)}px`;
 
       // Add to container
-      container.appendChild(span);
+      fragment.appendChild(span);
     }
+    container.appendChild(fragment);
   }
 
   rotateAllPoints(rotation: {x: number, y: number, z: number}) {
-    // Iterate over each word in the dictionary
     for (const word in this.wordDictionary) {
-      // Get the current point
       const point = this.wordDictionary[word] || {x: 0, y: 0, z: 0};
-
-      // Calculate the new point after rotation
       const newPoint = this.rotatePoint(point, rotation);
-
-      // Update the point in the dictionary
       this.wordDictionary[word] = newPoint;
     }
-
-    // Re-render words after their position changed
-    this.renderWords('globe');
+    window.requestAnimationFrame(() => this.renderWords('globe'));
   }
-
 
   randomSpherePoint(minDistance: number) {
     let point;
@@ -326,27 +410,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     const sin = Math.sin;
 
     // Convert degrees to radians for rotation
-    const rx = rotation.x * (Math.PI / 180);
-    const ry = rotation.y * (Math.PI / 180);
-    const rz = rotation.z * (Math.PI / 180);
+    const sinRx = sin(rotation.x * (Math.PI / 180));
+    const cosRx = cos(rotation.x * (Math.PI / 180));
+    const sinRy = sin(rotation.y * (Math.PI / 180));
+    const cosRy = cos(rotation.y * (Math.PI / 180));
+    const sinRz = sin(rotation.z * (Math.PI / 180));
+    const cosRz = cos(rotation.z * (Math.PI / 180));
 
     // Rotation around x-axis
     const newX = point.x;
-    const newY = point.y * cos(rx) - point.z * sin(rx);
-    const newZ = point.y * sin(rx) + point.z * cos(rx);
+    const newY = point.y * cosRx - point.z * sinRx;
+    const newZ = point.y * sinRx + point.z * cosRx;
 
     // Rotation around y-axis
-    const newX2 = newZ * sin(ry) + newX * cos(ry);
+    const newX2 = newZ * sinRy + newX * cosRy;
     const newY2 = newY;
-    const newZ2 = newZ * cos(ry) - newX * sin(ry);
+    const newZ2 = newZ * cosRy - newX * sinRy;
 
     // Rotation around z-axis
-    const newX3 = newX2 * cos(rz) - newY2 * sin(rz);
-    const newY3 = newX2 * sin(rz) + newY2 * cos(rz);
+    const newX3 = newX2 * cosRz - newY2 * sinRz;
+    const newY3 = newX2 * sinRz + newY2 * cosRz;
     const newZ3 = newZ2;
 
     return { x: newX3, y: newY3, z: newZ3 };
   }
+
 
   // Function for mapping word to a 3D point on the surface of the sphere
   mapWordToSpherePoint(word: string, screenPosition: { x: number, y: number }, screenWidth: number, screenHeight: number): void {
