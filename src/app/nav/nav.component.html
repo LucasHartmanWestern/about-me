@@ -3,10 +3,11 @@
     <input type="checkbox" id="darkmode-toggle" (click)="toggleMode()"/>
     <label for="darkmode-toggle"></label>
   </div>
-  <nav>
-    <button (click)="navigate('About')" [classList]="_navPage == 'About' ? 'active' : ''">About</button>
-    <button (click)="navigate('Research')" [classList]="_navPage == 'Research' ? 'active' : ''">Research</button>
-    <button (click)="navigate('Projects')" [classList]="_navPage == 'Projects' ? 'active' : ''">Projects</button>
+  <button (click)="toggleNav()" class="toggle-nav" [innerText]="mobileNavShow ? '>' : '<'"></button>
+  <nav [classList]="mobileNavShow ? 'mobile-show' : 'mobile-hide'">
+    <button (click)="navigate('About'); toggleNav()" [classList]="_navPage == 'About' ? 'active' : ''">About</button>
+    <button (click)="navigate('Research'); toggleNav()" [classList]="_navPage == 'Research' ? 'active' : ''">Research</button>
+    <button (click)="navigate('Projects'); toggleNav()" [classList]="_navPage == 'Projects' ? 'active' : ''">Projects</button>
   </nav>
 </div>
 

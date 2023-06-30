@@ -25,6 +25,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   mouseDragging = false;
   lastMousePos = {x: 0, y: 0};
 
+  touchStartX = 0;
+  mouseStartX = 0;
+  dragging = false;
+  itemWidth = 0;
+  totalMovement = 0;
+  dragOffset = 0;
+
   throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => ReturnType<T> | undefined {
     let inThrottle: boolean;
     let result: ReturnType<T> | undefined;
@@ -185,6 +192,76 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
+  @HostListener('document:mousemove', ['$event'])
+  @HostListener('document:mouseup', ['$event'])
+  mouseEvent(event: MouseEvent) {
+    if (event.type === 'mouseup') {
+      this.endDrag(event);
+    } else if (event.type === 'mousemove') {
+      this.drag(event);
+    }
+  }
+
+  startDrag(event: TouchEvent | MouseEvent) {
+    event.preventDefault();
+    this.dragging = true;
+    const carouselItem = document.querySelector('.carousel-item');
+    this.itemWidth = carouselItem ? carouselItem.getBoundingClientRect().width : 0;
+    this.totalMovement = 0;
+    if (event instanceof TouchEvent) {
+      this.touchStartX = event.touches[0].clientX;
+    } else {
+      this.mouseStartX = (event as MouseEvent).clientX;
+    }
+  }
+
+  drag(event: TouchEvent | MouseEvent) {
+    if (!this.dragging || this.itemWidth === 0) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      let dragDistance = 0;
+      if (event instanceof TouchEvent) {
+        dragDistance = event.touches[0].clientX - this.touchStartX;
+        this.touchStartX = event.touches[0].clientX;
+      } else {
+        dragDistance = (event as MouseEvent).clientX - this.mouseStartX;
+        this.mouseStartX = (event as MouseEvent).clientX;
+      }
+      this.dragOffset += dragDistance;
+
+      const carouselContent = document.querySelector('.carousel-content') as HTMLElement;
+      const transformValue = carouselContent.style.transform;
+
+      // This will adjust the translateX value as per the dragOffset
+      if (transformValue) {
+        let newTransformValue = transformValue.replace(/translate3d\(.*?\)/, `translate3d(${this.dragOffset}px, 0, 0)`);
+        carouselContent.style.transform = newTransformValue;
+      }
+    });
+  }
+
+  endDrag(event: TouchEvent | MouseEvent) {
+    this.dragging = false;
+    const index = this.courseList.indexOf(this.selectedItem);
+
+    let movement = Math.round(this.dragOffset / this.itemWidth);
+    if (Math.abs(movement) > 0) {
+      let newIndex = index - movement;
+      newIndex = Math.max(0, Math.min(this.courseList.length - 1, newIndex));
+      this.selectedItem = this.courseList[newIndex];
+    }
+
+    this.dragOffset = 0;
+
+    const carouselContent = document.querySelector('.carousel-content') as HTMLElement;
+    if (carouselContent) {
+      carouselContent.style.transform = this.getTransform();
+    }
+  }
+
+
   nextItem(): void {
     const index = this.courseList.indexOf(this.selectedItem);
     if (index < this.courseList.length - 1) {
@@ -200,10 +277,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getTransform(): string {
-
     let mobile = window.innerWidth <= 768 ? true : false;
-
     const index = this.courseList.indexOf(this.selectedItem);
+    let offset = this.dragging ? this.dragOffset : 0;
 
     if (index == this.courseList.length - 1) {
       document.querySelector('.arrow-right')?.setAttribute('disabled', 'true');
@@ -215,10 +291,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     if (index < this.courseList.length - (mobile ? 0 : 1)) {
-      return `translateX(calc(-${(index - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index) * 24}px ${mobile ? '+ 7.5%' : ''}))`;
+      return `translate3d(calc(${offset}px - ${(index - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index) * 24}px ${mobile ? '+ 7.5%' : ''}), 0, 0)`;
     }
     else {
-      return `translateX(calc(-${(index - 1 - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index - 1) * 24}px ${mobile ? '+ 7.5%' : ''}))`;
+      return `translate3d(calc(${offset}px - ${(index - (mobile ? 0 : 1)) * (!mobile ? 33 : 85)}% - ${(index - 1) * 24}px ${mobile ? '+ 7.5%' : ''}), 0, 0)`;
     }
   }
 

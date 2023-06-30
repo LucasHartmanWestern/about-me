@@ -29,10 +29,18 @@
 
   <div class="carousel">
     <button (click)="previousItem()" class="arrow arrow-left">&lt;</button>
-    <div class="carousel-content" [style.transform]="getTransform()">
+    <div class="carousel-content" draggable="true"
+         (touchstart)="startDrag($event)"
+         (touchmove)="drag($event)"
+         (touchend)="endDrag($event)"
+         (mousedown)="startDrag($event)"
+         (mousemove)="drag($event)"
+         (mouseup)="endDrag($event)"
+         (dragstart)="false"
+         [style.transform]="getTransform()">
       <div *ngFor="let item of courseList; let i = index"
-           [class.selected]="item === selectedItem"
-           class="carousel-item">
+             [class.selected]="item === selectedItem"
+             class="carousel-item">
 
         <div class="item-content">
           <h3 [innerText]="item.courseName"></h3>
@@ -43,6 +51,7 @@
     </div>
     <button (click)="nextItem()" class="arrow arrow-right">&gt;</button>
   </div>
+
 </section>
 
 <section id="work">

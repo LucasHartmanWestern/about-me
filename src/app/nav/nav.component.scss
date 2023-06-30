@@ -7,40 +7,43 @@ $image-path: '~src/assets/images/';
     overflow-x: hidden;
 
     label:after {
-      top: 4.5px !important;
+      top: 6.5px !important;
+      width: 22.5% !important;
     }
   }
+
+  .toggle-nav {
+    display: block !important;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+  }
+
   nav {
     overflow: hidden;
-    width: 90% !important;
+    width: auto !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    right: 10px;
+    top: 36px;
+    background-color: var(--primary);
+    padding: 8px;
+    margin: 14px -14px !important;
+    border-bottom-left-radius: 12px;
+    align-items: end !important;
+    box-shadow: -1.95px 1.95px 2.6px rgba(0, 0, 0, 0.15);
+
+    &.mobile-hide {
+      right: -100%;
+    }
+    &.mobile-show {
+      display: flex !important;
+    }
 
     button {
-      font-size: 1rem !important;
-    }
-  }
-}
-
-@media (max-width: 400px) {
-  .modeToggle {
-    width: 10% !important;
-    max-width: 40px !important;
-
-    label:after {
-      width: 50% !important;
-      height: 50% !important;
-      left: 50% !important;
-      top: 25% !important;
-    }
-  }
-  nav {
-    overflow: hidden;
-    width: 100% !important;
-    justify-content: space-around !important;
-    gap: 0 !important;
-
-    button {
-      font-size: 1rem !important;
-      text-align: center;
+      font-size: 1.5rem !important;
+      text-align: right;
     }
   }
 }
@@ -54,6 +57,12 @@ $image-path: '~src/assets/images/';
   padding: 10px;
   background-color: var(--primary);
   display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1.95px 2.6px rgba(0, 0, 0, 0.15);
+
+  .toggle-nav {
+    display: none;
+  }
 
   .modeToggle {
     width: 50%;
@@ -79,10 +88,10 @@ $image-path: '~src/assets/images/';
     }
     label:after {
       content: "";
-      width: 20%;
+      width: 15%;
       height: 50%;
       position: absolute;
-      top: 5.5px;
+      top: 4.5px;
       left: 7.5px;
       background: linear-gradient(180deg,#ffcc89,#d8860b);
       border-radius: 180px;
@@ -105,11 +114,12 @@ $image-path: '~src/assets/images/';
       transition: 0.3s
     }
     label:active:after{
-      width: 30%;
+      width: 40%;
     }
   }
 
   nav {
+    margin-right: 10%;
     z-index: 9;
     width: 80%;
     position: relative;
@@ -129,7 +139,7 @@ $image-path: '~src/assets/images/';
       cursor: pointer;
 
       &.active {
-        text-shadow: 0px 0px 4px var(--text);
+        text-shadow: 0 0 4px var(--text);
       }
     }
   }

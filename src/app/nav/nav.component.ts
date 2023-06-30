@@ -12,11 +12,11 @@ export class NavComponent implements OnInit {
   _navPage: string = "About";
   @Output() navPage = new EventEmitter<string>();
 
+  mobileNavShow: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
-
-
 
     // Get the current page URL
     var currentPage = window.location.href;
@@ -38,6 +38,10 @@ export class NavComponent implements OnInit {
 
     if (localStorage.getItem('displayMode') == 'dark')
       document.getElementById('darkmode-toggle')?.setAttribute('checked', 'true');
+  }
+
+  toggleNav(): void {
+    this.mobileNavShow = !this.mobileNavShow;
   }
 
   get getNavPage(): string {

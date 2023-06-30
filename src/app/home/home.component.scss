@@ -43,6 +43,7 @@ header {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  overflow-x: hidden;
 
   .description {
     width: 40%;
@@ -116,13 +117,14 @@ header {
 
     .carousel-content {
       display: flex;
-      transition: transform 0.5s ease-in-out;
+      transition: transform 0.3s ease-out;
       width: 80%;
       text-align: center;
       gap: 24px;
     }
 
     .carousel-item {
+      cursor: pointer;
       flex: 0 0 auto;
       width: 33%;
       scroll-snap-align: start;
