@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TextGeneratorService } from "../services/text-generator-service.service";
 
 @Component({
   selector: 'app-projects',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private textGeneratorService: TextGeneratorService) { }
 
   projectInfo: { project: string, description: string, events: {title: string, body: string, image: string | null}[] }[] = [];
 
@@ -20,10 +21,7 @@ export class ProjectsComponent implements OnInit {
       description:
         'Generate new text using a NLP trained only on the NIV Bible.<br><br>' +
         'Have the model finish prompts, or generate entirely new sentences.<br><br>' +
-        'Based on the research paper \"Attention is All You Need\"<br><br>' +
-        'For Example:<br>' +
-        '<b>Input</b>: \"Then I said test\"<br>' +
-        '<b>Output</b>: \"Then I said testimony to him, Amenah listening, saying to me\"', events: []});
+        'Based on the research paper \"Attention is All You Need\"<br><br>', events: []});
     this.projectInfo.push({project: 'Light Souls', description: 'A 3rd-person action-RPG souls-like game made in Unity', events: [
         {title: "Multiplayer", body: "Multiplayer using a C++ backend", image: "multiplayer-demo.png"},
         {title: "Character Select", body: "Multiple characters to choose from", image: "character-select.png"},
@@ -78,6 +76,27 @@ export class ProjectsComponent implements OnInit {
     body?.setAttribute('class', mode);
 
     this.handlePopin();
+  }
+
+  generateText(event: any, startingText: any, responseObject: any, submitBtn: any) {
+    event.preventDefault();
+
+    responseObject.setAttribute('class', 'loading');
+
+    startingText.disabled = true;
+
+    this.textGeneratorService.generateText(startingText.value, 100).subscribe(
+      data => {
+        responseObject.setAttribute('class', 'loaded');
+        responseObject.innerHTML = data.generated_text;
+        event.target.removeChild(submitBtn);
+      },
+      error => {
+        responseObject.setAttribute('class', 'loaded');
+        responseObject.innerHTML = 'An error has occurred...';
+        event.target.removeChild(submitBtn);
+      }
+    );
   }
 
   getEvents(identifier: string): {title: string, body: string, image: string}[] {

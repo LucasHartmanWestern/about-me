@@ -9,6 +9,24 @@
 
         <span class="description" [innerHTML]="project.description"></span>
 
+        <div *ngIf="project.project == 'Bible AI'">
+          <form (submit)="generateText($event, startingText, response, submit)">
+
+            <div class="intput-output">
+              <input type="text" #startingText placeholder="Starting text...">
+              <span class='hidden' id="response" #response>
+                <span class="loading-message">This usually takes about a minute</span>
+                <span class="dot-one"> .</span>
+                <span class="dot-two"> .</span>
+                <span class="dot-three"> .</span>
+              </span>
+            </div>
+
+            <input type="submit" #submit>
+          </form>
+
+        </div>
+
         <div class="timeline">
           <div *ngFor="let event of getEvents(project.project); let i = index" [classList]="i < getEvents(project.project).length - 1 ? 'bottom event' : 'event'">
             <div class="circle" *ngIf="i % 2 == 0"></div>

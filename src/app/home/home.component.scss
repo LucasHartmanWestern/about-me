@@ -200,11 +200,18 @@ header {
     .company {
 
       .company-info {
+        @media (max-width: 768px) {
+          top: 46px !important;
+        }
+
         display: flex;
         justify-content: left;
         align-items: center;
         padding: 0 24px;
         gap: 12px;
+        position: sticky;
+        top: 32px;
+        background: var(--background-overlay);
 
         h4 {
           font-size: 1.5rem;

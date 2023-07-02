@@ -9,6 +9,8 @@ import { ResearchComponent } from './research/research.component';
 import { ContactComponent } from './contact/contact.component';
 import { NavComponent } from './nav/nav.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { TextGeneratorService } from "./services/text-generator-service.service";
 
 
 @NgModule({
@@ -22,9 +24,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, TextGeneratorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
