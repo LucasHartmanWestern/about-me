@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedItem: any;
   atEnd: boolean = false;
   atStart: boolean = false;
+  timeoutId: any; // Global variable to store the timeout ID
 
   workList: {company: string, logo: string, roles: {role: string, period: string,  description: string}[]}[] = [];
 
@@ -95,7 +96,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Microprocessors and Microcomputers', grade: 94});
     this.courseList.push({courseName: 'Web Technologies', grade: 93});
     this.courseList.push({courseName: 'Software Requirements Analysis', grade: 97});
-    this.selectedItem = this.courseList[2]; // Default selection
+    this.selectedItem = this.courseList[0]; // Default selection
 
     this.workList.push({
       company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
@@ -159,6 +160,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wordDictionary['GCP'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Numpy'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Cplex'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['MATLAB'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Swift'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Selenium'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['React'] = this.randomSpherePoint(0.5);
 
     this.intervalID = setInterval(() => {
       if (!this.mouseDragging) {
@@ -190,6 +195,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     body?.setAttribute('class', mode);
 
+    this.resetTimer();
   }
 
   @HostListener('document:mousemove', ['$event'])
@@ -267,6 +273,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (index < this.courseList.length - 1) {
       this.selectedItem = this.courseList[index + 1];
     }
+
+    this.resetTimer();
+  }
+
+  resetTimer() {
+    clearTimeout(this.timeoutId); // Clear the previous timeout, if any
+    this.timeoutId = setTimeout(this.nextItem.bind(this), 5000); // Call nextItem() after 5 seconds (adjust the duration as needed)
   }
 
   previousItem(): void {

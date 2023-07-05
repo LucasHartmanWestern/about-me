@@ -33,6 +33,7 @@ header {
     }
     #globe::ng-deep {
       width: 80% !important;
+      cursor: pointer;
 
       span {
         z-index: -999;
@@ -57,6 +58,12 @@ header {
     aspect-ratio: 1;
     position: relative;
     color: var(--text);
+    cursor: pointer;
+
+    span {
+      user-select: none;
+      cursor: pointer;
+    }
   }
 }
 

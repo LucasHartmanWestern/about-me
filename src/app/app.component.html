@@ -1,27 +1,29 @@
 <app-nav (navPage)="onNavPageChange($event)"></app-nav>
 
-<div class="main">
+<div class="whole">
+  <div class="main">
 
-  <div *ngIf="page == 'About'">
-    <app-home></app-home>
+    <div *ngIf="page == 'About'">
+      <app-home></app-home>
+    </div>
+
+    <div *ngIf="page == 'Research'">
+      <app-research></app-research>
+    </div>
+
+    <div *ngIf="page == 'Projects'">
+      <app-projects></app-projects>
+    </div>
+
   </div>
 
-  <div *ngIf="page == 'Research'">
-    <app-research></app-research>
-  </div>
-
-  <div *ngIf="page == 'Projects'">
-    <app-projects></app-projects>
-  </div>
-
+  <footer>
+    <section id="socials">
+      <a href="https://www.linkedin.com/in/lucas-hartman-2a2b25171/" id="linkedin" target="_blank"></a>
+      <a href="https://github.com/LucasHartmanWestern" id="github" target="_blank"></a>
+      <a href="https://www.instagram.com/lucas_hartman2021/" id="instagram" target="_blank"></a>
+    </section>
+    <p>Feel free to reach out to me at <a href="mailto:lhartma8@uwo.ca">lhartma8@uwo.ca</a></p>
+    <p>© 2023 Hartman</p>
+  </footer>
 </div>
-
-<footer>
-  <section id="socials">
-    <a href="https://www.linkedin.com/in/lucas-hartman-2a2b25171/" id="linkedin" target="_blank"></a>
-    <a href="https://github.com/LucasHartmanWestern" id="github" target="_blank"></a>
-    <a href="https://www.instagram.com/lucas_hartman2021/" id="instagram" target="_blank"></a>
-  </section>
-  <p>Feel free to reach out to me at <a href="mailto:lhartma8@uwo.ca">lhartma8@uwo.ca</a></p>
-  <p>© 2023 Hartman</p>
-</footer>

@@ -8,9 +8,17 @@ a {
   color: var(--text);
 }
 
+.whole {
+  height: calc(100vh - 8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 footer {
   @media (max-width: 768px) {
     flex-direction: column !important;
+    min-height: 166px !important;
 
     #socials {
       width: 100% !important;
@@ -30,6 +38,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  min-height: 64px;
 
   p {
     color: var(--text);
