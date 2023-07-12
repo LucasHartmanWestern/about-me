@@ -194,8 +194,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     body?.setAttribute('class', mode);
-
-    this.resetTimer();
   }
 
   @HostListener('document:mousemove', ['$event'])
@@ -273,13 +271,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (index < this.courseList.length - 1) {
       this.selectedItem = this.courseList[index + 1];
     }
-
-    this.resetTimer();
-  }
-
-  resetTimer() {
-    clearTimeout(this.timeoutId); // Clear the previous timeout, if any
-    this.timeoutId = setTimeout(this.nextItem.bind(this), 5000); // Call nextItem() after 5 seconds (adjust the duration as needed)
   }
 
   previousItem(): void {
