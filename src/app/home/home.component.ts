@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.workList.push({
       company: 'Western AI', logo: './assets/images/wai.jpg', roles: [{
-        role: 'Undergraduate Researcher',
+        role: 'Senior Director of Projects',
         period: 'July 2023 - Present',
         description: 'In my role as the Senior Director of Projects at the Western AI Student Club, I have had the privilege to lead a diverse team of aspiring professionals towards achieving common goals within the field of artificial intelligence. My main responsibility is overseeing and managing the leaders of various project teams, ensuring their strategic alignment with the club\'s mission and vision, while fostering a culture of innovation and teamwork. I continually keep a pulse on all projects, safeguarding their timely execution and quality output.'}]
     });
