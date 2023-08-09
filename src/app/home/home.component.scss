@@ -19,8 +19,57 @@ p {
   text-align: center;
 }
 
+.splash {
+  @media (max-width: 768px) {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  margin: 0 auto 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  #skills {
+    @media (max-width: 768px) {
+      width: 95% !important;
+    }
+
+    width: 40%;
+    display: flex;
+    padding-top: 36px;
+  }
+
+  .about-me {
+    @media (max-width: 768px) {
+      width: 95% !important;
+    }
+
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .description {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+  }
+}
+
 header {
   text-align: center;
+
+  .headshot {
+    height: 25vh;
+    max-height: 400px;
+    border-radius: 50%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: var(--text) 0px 5px 15px;
+    margin-bottom: 12px;
+  }
 }
 
 .skills-content {
@@ -45,16 +94,11 @@ header {
   justify-content: space-around;
   align-items: center;
   overflow-x: hidden;
-
-  .description {
-    width: 40%;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--text);
-  }
+  margin: auto;
+  width: 100%;
 
   #globe::ng-deep {
-    width: 40%;
+    width: 100%;
     aspect-ratio: 1;
     position: relative;
     color: var(--text);

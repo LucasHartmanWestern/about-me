@@ -33,7 +33,11 @@ li {
     }
     .date {
       font-size: 1.2rem;
-      margin: 24px;
+      margin-bottom: 12px;
+    }
+    .journal {
+      font-size: 1.3rem;
+      margin-top: 12px;
     }
     object {
       @media (max-width: 768px) {
