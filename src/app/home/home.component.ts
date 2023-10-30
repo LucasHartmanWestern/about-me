@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.workList.push({
       company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
-      role: 'Undergraduate Researcher',
+      role: 'Undergraduate Research Fellow',
         period: 'May 2023 - Present',
         description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project.'}]
     });
@@ -139,7 +139,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         description: 'I reported directly to the Director of Operations for the company and helped to support the sales representatives at the company with any technical issues they had. I also helped to build and send reports to the company\'s various clients. I gained lots of experience in this role and learned much about the technology used in many modern businesses.'
       }, {
         role: 'Inventory Analyst Support',
-        period: 'October 2019 - June 20203',
+        period: 'October 2019 - June 2021',
         description: 'In this role I did back-end technical support work for the company as well as made inventory ordering decisions based on trends in sales and current stock levels. I was also responsible for managing employee compliance with our internal systems.'
       }]
     });
