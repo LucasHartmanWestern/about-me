@@ -81,9 +81,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.renderWords('globe');
     this.performRotation();
 
+    this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
+    this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Discrete Math', grade: 96});
-    this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
     this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
     this.courseList.push({courseName: 'Scripting', grade: 97});
     this.courseList.push({courseName: 'Software Design', grade: 95});
@@ -95,14 +96,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Intro to Electrical Engineering', grade: 100});
     this.courseList.push({courseName: 'Microprocessors and Microcomputers', grade: 94});
     this.courseList.push({courseName: 'Web Technologies', grade: 93});
-    this.courseList.push({courseName: 'Software Requirements Analysis', grade: 97});
+    this.courseList.push({courseName: 'Software Requirements and Analysis', grade: 97});
+    this.courseList.push({courseName: 'Software Project and Process Management', grade: 91});
     this.selectedItem = this.courseList[0]; // Default selection
 
     this.workList.push({
       company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
       role: 'Undergraduate Research Fellow',
         period: 'May 2023 - Present',
-        description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project.'}]
+        description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project. In this position I published a paper at the 22nd International Conference on Machine Learning and Application, which won the Best Paper Award.'}]
     });
     this.workList.push({
       company: 'Western Developers Society', logo: './assets/images/wds.png', roles: [{
