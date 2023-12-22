@@ -83,6 +83,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
     this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
+    this.courseList.push({courseName: 'Intro to Machine Learning', grade: 96});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Discrete Math', grade: 96});
     this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
