@@ -86,6 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Intro to Machine Learning', grade: 96});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Discrete Math', grade: 96});
+    this.courseList.push({courseName: 'HCI Design', grade: 99});
     this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
     this.courseList.push({courseName: 'Scripting', grade: 97});
     this.courseList.push({courseName: 'Software Design', grade: 95});
@@ -93,19 +94,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Networking', grade: 97});
     this.courseList.push({courseName: 'Database Management Systems', grade: 95});
     this.courseList.push({courseName: 'Operating Systems', grade: 93});
-    this.courseList.push({courseName: 'HCI Design', grade: 99});
     this.courseList.push({courseName: 'Intro to Electrical Engineering', grade: 100});
     this.courseList.push({courseName: 'Microprocessors and Microcomputers', grade: 94});
     this.courseList.push({courseName: 'Web Technologies', grade: 93});
     this.courseList.push({courseName: 'Software Requirements and Analysis', grade: 97});
     this.courseList.push({courseName: 'Software Project and Process Management', grade: 91});
+    this.courseList.push({courseName: 'Information Security', grade: 91});
+    this.courseList.push({courseName: 'Theoretical Foundations of Software Engineering', grade: 91});
     this.selectedItem = this.courseList[0]; // Default selection
 
     this.workList.push({
       company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
-      role: 'Undergraduate Research Fellow',
-        period: 'May 2023 - Present',
-        description: 'In this position, I work on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project. In this position I published a paper at the 22nd International Conference on Machine Learning and Application, which won the Best Paper Award.'}]
+        role: 'Research Assistant',
+        period: 'November 2023 - Present',
+        description: 'In addition to being a full-time engineering student, I also work part time as a research assistance in the faculty of electrical and computer engineering. My research has covered many topics including digital twins, blockchain development, and traffic simulation. My goal is to use this knowledge to expand upon my previous award-winning research.'
+      }, {
+        role: 'Undergraduate Student Researcher',
+        period: 'May 2023 - August 2023',
+        description: 'In this summer position, I worked on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project. In this position I published a paper at the 22nd International Conference on Machine Learning and Application, which won the Best Paper Award.'
+      }]
     });
     this.workList.push({
       company: 'Western Developers Society', logo: './assets/images/wds.png', roles: [{
@@ -167,12 +174,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wordDictionary['Figma'] = this.randomSpherePoint(0.5);
     this.wordDictionary['AWS'] = this.randomSpherePoint(0.5);
     this.wordDictionary['GCP'] = this.randomSpherePoint(0.5);
-    this.wordDictionary['Numpy'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['NumPy'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Cplex'] = this.randomSpherePoint(0.5);
     this.wordDictionary['MATLAB'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Swift'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Selenium'] = this.randomSpherePoint(0.5);
     this.wordDictionary['React'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Scikit Learn'] = this.randomSpherePoint(0.5);
 
     this.intervalID = setInterval(() => {
       if (!this.mouseDragging) {
