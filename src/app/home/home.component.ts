@@ -84,6 +84,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
     this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
     this.courseList.push({courseName: 'Intro to Machine Learning', grade: 96});
+    this.courseList.push({courseName: 'Computer Graphics', grade: 100});
+    this.courseList.push({courseName: 'Software Engineering Design 2', grade: 100});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Discrete Math', grade: 96});
     this.courseList.push({courseName: 'HCI Design', grade: 99});
@@ -100,9 +102,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Software Requirements and Analysis', grade: 97});
     this.courseList.push({courseName: 'Software Project and Process Management', grade: 91});
     this.courseList.push({courseName: 'Information Security', grade: 91});
+    this.courseList.push({courseName: 'Engineering Ethics', grade: 91});
     this.courseList.push({courseName: 'Theoretical Foundations of Software Engineering', grade: 91});
     this.selectedItem = this.courseList[0]; // Default selection
 
+    this.workList.push({
+      company: 'Optimy', logo: './assets/images/optimy.png', roles: [{
+          role: 'Junior AI Engineer',
+          period: 'April 2024 - Current',
+          description: 'I work on developing AI-based systems to move data between internally networked systems. I also design user-facing AI-systems which are used by tens of thousands of users across Canada.'
+      },{
+        role: 'Front-end Dev',
+        period: 'April 2022 - June 2023',
+        description: 'I worked directly with senior front-end developers learning new development skills and working on numerous web development projects. I worked with the Angular framework and created numerous features for one of the company\'s web applications which is currently used by hundreds of users daily.'
+      }, {
+        role: 'Quality Assurance Specialist',
+        period: 'June 2020 - June 2023',
+        description: 'In this position, I did program testing, technical troubleshooting, and often worked with senior software developers giving them input on program development as well as relaying user feedback. I also handled the automation of regression testing using Selenium with BrowserStack. I gained a lot of knowledge on industry-leading technology and how it can be used effectively in the business world. I was trained on a lot of software development best practices and learned a lot about how to develop code that is less prone to issues.'
+      }]
+    });
     this.workList.push({
       company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
         role: 'Research Assistant',
@@ -130,17 +148,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         role: 'Senior Director of Projects',
         period: 'July 2023 - Present',
         description: 'In my role as the Senior Director of Projects at the Western AI Student Club, I have had the privilege to lead a diverse team of aspiring professionals towards achieving common goals within the field of artificial intelligence. My main responsibility is overseeing and managing the leaders of various project teams, ensuring their strategic alignment with the club\'s mission and vision, while fostering a culture of innovation and teamwork. I continually keep a pulse on all projects, safeguarding their timely execution and quality output.'}]
-    });
-    this.workList.push({
-      company: 'Optimy', logo: './assets/images/optimy.png', roles: [{
-        role: 'Front-end Dev',
-        period: 'April 2022 - June 2023',
-        description: 'I worked directly with senior front-end developers learning new development skills and working on numerous web development projects. I worked with the Angular framework and created numerous features for one of the company\'s web applications which is currently used by hundreds of users daily.'
-      }, {
-        role: 'Quality Assurance Specialist',
-        period: 'June 2020 - June 2023',
-        description: 'In this position, I did program testing, technical troubleshooting, and often worked with senior software developers giving them input on program development as well as relaying user feedback. I also handled the automation of regression testing using Selenium with BrowserStack. I gained a lot of knowledge on industry-leading technology and how it can be used effectively in the business world. I was trained on a lot of software development best practices and learned a lot about how to develop code that is less prone to issues.'
-      }]
     });
     this.workList.push({
       company: 'Kognitive Sales Solutions', logo: './assets/images/kss.png', roles: [{
@@ -181,6 +188,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wordDictionary['Selenium'] = this.randomSpherePoint(0.5);
     this.wordDictionary['React'] = this.randomSpherePoint(0.5);
     this.wordDictionary['Scikit Learn'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['OpenGL'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['GLSL'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Kubernetes'] = this.randomSpherePoint(0.5);
+    this.wordDictionary['Docker'] = this.randomSpherePoint(0.5);
 
     this.intervalID = setInterval(() => {
       if (!this.mouseDragging) {

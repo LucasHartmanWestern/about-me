@@ -14,8 +14,17 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.projectInfo.push({project: 'Cool Pool (in progress)', description: 'Foddian-type game where the player hits a ball to get to the top', events: [
-        {title: "Swing", body: "Move the ball by hitting with various sports equipment", image: "golf-swing.png"}
+    this.projectInfo.push({project: 'Bell Artificial Intelligence Technician', description:
+        'Custom-built multi-modal language model used to troubleshoot various problems users of Bell Canada products may face.<br><br>' +
+        'Supports sending text, photos, and PDFs, then analyzes customer concerns to provide relevant and helpful responses to users.<br><br>' +
+        'This project was made in collaboration with Bell Canada to reduce the training time needed for their internet technicians and also to prototype a customer-facing support agent.<br><br>' +
+        'Video demo <a href="https://youtu.be/xYl0aiNbgQg">here</a><br><br>', events: []});
+    this.projectInfo.push({project: 'Screen Sight', description:
+          'Augmented reality enhancement that allows the user to use their smartphone while wearing a virtual reality headset.<br><br>' +
+          'Uses computer vision, edge detection, and image projection techniques in tandem.<br><br>' +
+          'Video demo and installation tutorial <a href="https://www.youtube.com/watch?v=cNDiibXy4fQ">here</a><br><br>', events: [
+        {title: "Before", body: "Before tool is used", image: "Before Processing.jpg"},
+        {title: "After", body: "After tool is used", image: "After Processing.jpg"}
       ]});
     this.projectInfo.push({project: 'Bible AI',
       description:
