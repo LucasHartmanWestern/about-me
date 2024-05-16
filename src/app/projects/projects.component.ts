@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TextGeneratorService } from "../services/text-generator-service.service";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-projects',
@@ -8,21 +10,19 @@ import { TextGeneratorService } from "../services/text-generator-service.service
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor(private textGeneratorService: TextGeneratorService) { }
+  constructor(private textGeneratorService: TextGeneratorService, private sanitizer: DomSanitizer) { }
 
-  projectInfo: { project: string, description: string, events: {title: string, body: string, image: string | null}[] }[] = [];
+  projectInfo: { project: string, video_link?: SafeResourceUrl, description: string, events: {title: string, body: string, image: string | null}[] }[] = [];
 
   ngOnInit(): void {
 
-    this.projectInfo.push({project: 'Bell Artificial Intelligence Technician', description:
+    this.projectInfo.push({project: 'Bell Artificial Intelligence Technician', video_link: this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/xYl0aiNbgQg?si=ycBeo4d6VPo-UkZT"), description:
         'Custom-built multi-modal language model used to troubleshoot various problems users of Bell Canada products may face.<br><br>' +
         'Supports sending text, photos, and PDFs, then analyzes customer concerns to provide relevant and helpful responses to users.<br><br>' +
-        'This project was made in collaboration with Bell Canada to reduce the training time needed for their internet technicians and also to prototype a customer-facing support agent.<br><br>' +
-        'Video demo <a href="https://youtu.be/xYl0aiNbgQg">here</a><br><br>', events: []});
-    this.projectInfo.push({project: 'Screen Sight', description:
+        'This project was made in collaboration with Bell Canada to reduce the training time needed for their internet technicians and also to prototype a customer-facing support agent.', events: []});
+    this.projectInfo.push({project: 'Screen Sight', video_link: this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/cNDiibXy4fQ?si=_JUGTkRe0TL9kpCJ"), description:
           'Augmented reality enhancement that allows the user to use their smartphone while wearing a virtual reality headset.<br><br>' +
-          'Uses computer vision, edge detection, and image projection techniques in tandem.<br><br>' +
-          'Video demo and installation tutorial <a href="https://www.youtube.com/watch?v=cNDiibXy4fQ">here</a><br><br>', events: [
+          'Uses computer vision, edge detection, and image projection techniques in tandem.', events: [
         {title: "Before", body: "Before tool is used", image: "Before Processing.jpg"},
         {title: "After", body: "After tool is used", image: "After Processing.jpg"}
       ]});
@@ -41,7 +41,7 @@ export class ProjectsComponent implements OnInit {
         {title: "Boss", body: "Multiple bosses to fight", image: "boss-demo.png"},
         {title: "Dialogue", body: "Full dialogue system and narrative", image: "dialogue.png"}
       ]});
-    this.projectInfo.push({project: 'UWOutlines', description: 'A course outline editor website for use by the University hosted using GCP<br><br>Demo link <a href="https://www.youtube.com/watch?v=WsDy3XwIQYc">here</a>', events: [
+    this.projectInfo.push({project: 'UWOutlines', video_link: this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/WsDy3XwIQYc?si=hdv4-kTzieC5QeFo"), description: 'A course outline editor website for use by the University hosted using GCP.', events: [
         {title: "Editor", body: "Outline editor system", image: "outline-editor.png"},
         {title: "Account Creation", body: "Authentication system with account creation", image: "accounts.png"},
         {title: "GPT Assistance", body: "ChatGPT integration for suggested improvement while editing", image: "gpt-assist.png"},

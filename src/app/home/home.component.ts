@@ -82,28 +82,40 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.performRotation();
 
     this.courseList.push({courseName: 'Data Structures and Algorithms', grade: 100});
-    this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
-    this.courseList.push({courseName: 'Intro to Machine Learning', grade: 96});
     this.courseList.push({courseName: 'Computer Graphics', grade: 100});
     this.courseList.push({courseName: 'Software Engineering Design 2', grade: 100});
+    this.courseList.push({courseName: 'Hardware/Software Co-Design', grade: 100});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
-    this.courseList.push({courseName: 'Discrete Math', grade: 96});
+    this.courseList.push({courseName: 'Intro to Electrical Engineering', grade: 100});
     this.courseList.push({courseName: 'HCI Design', grade: 99});
+    this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
     this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
     this.courseList.push({courseName: 'Scripting', grade: 97});
-    this.courseList.push({courseName: 'Software Design', grade: 95});
-    this.courseList.push({courseName: 'Software Construction', grade: 95});
     this.courseList.push({courseName: 'Networking', grade: 97});
-    this.courseList.push({courseName: 'Database Management Systems', grade: 95});
-    this.courseList.push({courseName: 'Operating Systems', grade: 93});
-    this.courseList.push({courseName: 'Intro to Electrical Engineering', grade: 100});
-    this.courseList.push({courseName: 'Microprocessors and Microcomputers', grade: 94});
-    this.courseList.push({courseName: 'Web Technologies', grade: 93});
     this.courseList.push({courseName: 'Software Requirements and Analysis', grade: 97});
+    this.courseList.push({courseName: 'Artificial Intelligence 2', grade: 96});
+    this.courseList.push({courseName: 'Intro to Machine Learning', grade: 96});
+    this.courseList.push({courseName: 'Discrete Math', grade: 96});
+    this.courseList.push({courseName: 'Software Engineering Design 1', grade: 95});
+    this.courseList.push({courseName: 'Software Construction', grade: 95});
+    this.courseList.push({courseName: 'Database Management Systems', grade: 95});
+    this.courseList.push({courseName: 'Cloud Computing', grade: 94});
+    this.courseList.push({courseName: 'Microprocessors and Microcomputers', grade: 94});
+    this.courseList.push({courseName: 'Linear Algebra', grade: 94});
+    this.courseList.push({courseName: 'Operating Systems', grade: 93});
+    this.courseList.push({courseName: 'Web Technologies', grade: 93});
+    this.courseList.push({courseName: 'Foundations of Engineering Practice', grade: 93});
+    this.courseList.push({courseName: 'Software Testing and Maintenance', grade: 92});
     this.courseList.push({courseName: 'Software Project and Process Management', grade: 91});
     this.courseList.push({courseName: 'Information Security', grade: 91});
     this.courseList.push({courseName: 'Engineering Ethics', grade: 91});
     this.courseList.push({courseName: 'Theoretical Foundations of Software Engineering', grade: 91});
+    this.courseList.push({courseName: 'Ordinary Differential Equations', grade: 90});
+    this.courseList.push({courseName: 'Calculus 2', grade: 86});
+    this.courseList.push({courseName: 'Calculus 1', grade: 85});
+    this.courseList.push({courseName: 'Applied Probability and Statistics', grade: 80});
+    this.courseList.push({courseName: 'Calculus 3', grade: 75});
+
     this.selectedItem = this.courseList[0]; // Default selection
 
     this.workList.push({
@@ -135,7 +147,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.workList.push({
       company: 'Western Developers Society', logo: './assets/images/wds.png', roles: [{
         role: 'Vice President of Technology',
-        period: 'June 2023 - Present',
+        period: 'June 2023 - May 2024',
         description: 'This role involves managing the technological output of one of the largest computer science student clubs at Western University. On top of managing a small team of the top developers within the club, I also help to design and coordinate events that teach new and exciting technologies to interested students.'
       }, {
         role: 'Technical Lead',
@@ -146,7 +158,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.workList.push({
       company: 'Western AI', logo: './assets/images/wai.jpg', roles: [{
         role: 'Senior Director of Projects',
-        period: 'July 2023 - Present',
+        period: 'July 2023 - May 2024',
         description: 'In my role as the Senior Director of Projects at the Western AI Student Club, I have had the privilege to lead a diverse team of aspiring professionals towards achieving common goals within the field of artificial intelligence. My main responsibility is overseeing and managing the leaders of various project teams, ensuring their strategic alignment with the club\'s mission and vision, while fostering a culture of innovation and teamwork. I continually keep a pulse on all projects, safeguarding their timely execution and quality output.'}]
     });
     this.workList.push({

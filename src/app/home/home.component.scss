@@ -62,9 +62,7 @@ header {
   .headshot {
     height: 25vh;
     max-height: 400px;
-    border-radius: 50%;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-radius: 12px;
     box-shadow: var(--text) 0px 5px 15px;
     margin-bottom: 12px;
   }
@@ -208,9 +206,10 @@ header {
       transform: translateY(-50%);
       font-size: 2em;
       color: var(--secondary);
-      background: transparent;
       border: none;
       z-index: 2;
+      background-color: var(--background);
+      height: 100%;
 
       &:disabled {
         cursor: default;

@@ -8,6 +8,12 @@
       <div class="panel page-body">
 
         <span class="description" [innerHTML]="project.description"></span>
+        <br *ngIf="project.video_link">
+        <br *ngIf="project.video_link">
+        <iframe *ngIf="project.video_link" class="video" width="560" height="315" [src]="project?.video_link"
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+
+        </iframe>
 
         <div *ngIf="project.project == 'Bible AI'">
           <form (submit)="generateText($event, startingText, response, submit)">
