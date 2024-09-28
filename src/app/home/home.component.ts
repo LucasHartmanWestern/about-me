@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.workList.push({
       company: 'Optimy', logo: './assets/images/optimy.png', roles: [{
           role: 'Junior AI Engineer',
-          period: 'April 2024 - Current',
+          period: 'April 2024 - October 2024',
           description: 'I work on developing AI-based systems to move data between internally networked systems. I also design user-facing AI-systems which are used by tens of thousands of users across Canada.'
       },{
         role: 'Front-end Dev',
@@ -134,7 +134,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }]
     });
     this.workList.push({
-      company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
+        company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
+        role: 'Teaching Assistant',
+        period: 'September 2024 - Present',
+        description: 'In addition to being a full-time engineering student, I also work part time as a research assistance in the faculty of electrical and computer engineering. My research has covered many topics including digital twins, blockchain development, and traffic simulation. My goal is to use this knowledge to expand upon my previous award-winning research.'
+      }, {
         role: 'Research Assistant',
         period: 'November 2023 - Present',
         description: 'In addition to being a full-time engineering student, I also work part time as a research assistance in the faculty of electrical and computer engineering. My research has covered many topics including digital twins, blockchain development, and traffic simulation. My goal is to use this knowledge to expand upon my previous award-winning research.'
@@ -142,6 +146,17 @@ export class HomeComponent implements OnInit, OnDestroy {
         role: 'Undergraduate Student Researcher',
         period: 'May 2023 - August 2023',
         description: 'In this summer position, I worked on researching and developing interesting new ideas for optimizing charging algorithms with electric vehicles. I received the Dean\'s Award from the University for this position and work directly with other graduate students and researchers across the globe. I integrate AI learning algorithms into my research and work with cutting-edge simulators to assist in my research project. In this position I published a paper at the 22nd International Conference on Machine Learning and Application, which won the Best Paper Award.'
+      }]
+    });
+    this.workList.push({
+      company: 'Kognitive Sales Solutions', logo: './assets/images/kss.png', roles: [{
+        role: 'Field Support Technician',
+        period: 'October 2018 - September 2021',
+        description: 'I reported directly to the Director of Operations for the company and helped to support the sales representatives at the company with any technical issues they had. I also helped to build and send reports to the company\'s various clients. I gained lots of experience in this role and learned much about the technology used in many modern businesses.'
+      }, {
+        role: 'Inventory Analyst Support',
+        period: 'October 2019 - June 2021',
+        description: 'In this role I did back-end technical support work for the company as well as made inventory ordering decisions based on trends in sales and current stock levels. I was also responsible for managing employee compliance with our internal systems.'
       }]
     });
     this.workList.push({
@@ -160,17 +175,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         role: 'Senior Director of Projects',
         period: 'July 2023 - May 2024',
         description: 'In my role as the Senior Director of Projects at the Western AI Student Club, I have had the privilege to lead a diverse team of aspiring professionals towards achieving common goals within the field of artificial intelligence. My main responsibility is overseeing and managing the leaders of various project teams, ensuring their strategic alignment with the club\'s mission and vision, while fostering a culture of innovation and teamwork. I continually keep a pulse on all projects, safeguarding their timely execution and quality output.'}]
-    });
-    this.workList.push({
-      company: 'Kognitive Sales Solutions', logo: './assets/images/kss.png', roles: [{
-        role: 'Field Support Technician',
-        period: 'October 2018 - September 2021',
-        description: 'I reported directly to the Director of Operations for the company and helped to support the sales representatives at the company with any technical issues they had. I also helped to build and send reports to the company\'s various clients. I gained lots of experience in this role and learned much about the technology used in many modern businesses.'
-      }, {
-        role: 'Inventory Analyst Support',
-        period: 'October 2019 - June 2021',
-        description: 'In this role I did back-end technical support work for the company as well as made inventory ordering decisions based on trends in sales and current stock levels. I was also responsible for managing employee compliance with our internal systems.'
-      }]
     });
 
 
