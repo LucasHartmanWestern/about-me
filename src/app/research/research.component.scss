@@ -22,8 +22,14 @@ li {
   align-items: center;
   justify-content: space-between;
   padding: 24px;
+  gap: 24px;
+
+  hr {
+    width: 100%;
+  }
 
   .paper {
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;

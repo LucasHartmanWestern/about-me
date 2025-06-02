@@ -87,8 +87,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.courseList.push({courseName: 'Hardware/Software Co-Design', grade: 100});
     this.courseList.push({courseName: 'Intro to Programming', grade: 100});
     this.courseList.push({courseName: 'Intro to Electrical Engineering', grade: 100});
+    this.courseList.push({courseName: 'Digital Image Processing', grade: 99});
     this.courseList.push({courseName: 'HCI Design', grade: 99});
+    this.courseList.push({courseName: 'Reinforcement Learning', grade: 98});
     this.courseList.push({courseName: 'Artificial Intelligence 1', grade: 97});
+    this.courseList.push({courseName: 'Data Analytics Foundations', grade: 97});
     this.courseList.push({courseName: 'Digital Logic Systems', grade: 97});
     this.courseList.push({courseName: 'Scripting', grade: 97});
     this.courseList.push({courseName: 'Networking', grade: 97});
@@ -119,6 +122,40 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.selectedItem = this.courseList[0]; // Default selection
 
     this.workList.push({
+      company: 'AIR Studio', logo: './assets/images/air-studio.jpg', roles: [{
+        role: 'Chief Technology Officer',
+        period: 'December 2024 - Present',
+        description: 'At AIR Studio, I oversee the full stack of AI-driven automation and innovation initiatives, partnering with clients to:\n' +
+          '\n' +
+          '🚀 Automate & Scale \n' +
+          '- Design agentic-AI workflows and custom scripts that reduce manual data processing time\n' +
+          '\n' +
+          '🛠️ Ensure Quality & Consistency \n' +
+          '- Build automated QA testing frameworks and reporting dashboards, boosting release confidence and slashing error rates\n' +
+          '\n' +
+          '💡 Drive Innovation \n' +
+          '- Pilot new AI-based solutions (NLP, computer vision, RL) to unlock untapped efficiencies in operations\n' +
+          '\n' +
+          'If you’re looking to streamline processes or explore AI-powered growth, let’s connect!'
+      }]
+    });
+    this.workList.push({
+      company: 'Ivey Business School', logo: './assets/images/ivey.jpg', roles: [{
+        role: 'Graduate Student Assistant',
+        period: 'December 2024 - Present',
+        description: 'I work with leaders at the Ivey School of Business to develop software tools that will aid in case-based learning. I work with a team of other graduate students to design and develop this tool which integrates with and builds upon existing foundational LLM models in a very exciting way.'
+      }]
+    });
+    this.workList.push({
+      company: 'Vector Institute', logo: './assets/images/vector.jpg', roles: [{
+        role: 'Applied AI Design & Delivery Intern',
+        period: 'January 2025 - May 2025',
+        description: 'Support AI education and projects, which enable Vector sponsors and partners to develop, deploy, and scale AI applications.\n' +
+          '\n' +
+          'In this role, I developed tools to help companies faciliate responsible AI governance within their organizations. I also helped to run an AI interpretability bootcamp as part of the Vector team, which involved organizing events, delivering presentations, automating reports, working directly with Vector sponsor teams to help them build interpretable AI projects.'
+      }]
+    });
+    this.workList.push({
       company: 'Optimy', logo: './assets/images/optimy.png', roles: [{
           role: 'Junior AI Engineer',
           period: 'April 2024 - October 2024',
@@ -137,7 +174,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         company: 'Western University', logo: './assets/images/western_logo_2.png', roles: [{
         role: 'Teaching Assistant',
         period: 'September 2024 - Present',
-        description: 'In addition to being a full-time engineering student, I also work part time as a research assistance in the faculty of electrical and computer engineering. My research has covered many topics including digital twins, blockchain development, and traffic simulation. My goal is to use this knowledge to expand upon my previous award-winning research.'
+        description: 'I work part time as a teaching assistance in the faculty of electrical and computer engineering. I have been a TA for Data Structures and Algorithms (SE 2205) and Software Construction (SE 2250).'
       }, {
         role: 'Research Assistant',
         period: 'November 2023 - Present',
